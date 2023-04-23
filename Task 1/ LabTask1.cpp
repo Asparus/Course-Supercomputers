@@ -17,12 +17,12 @@ int f(int b)
 int main()
 {
 	int a[1000], b[1000];
-	// Инициализация массива b
+	// Г€Г­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї Г¬Г Г±Г±ГЁГўГ  b
 	for (int i = 0; i < 1000; i++)
 		b[i] = i;
 
 	clock_t start = clock();
-	// Директива OpenMP для распараллеливания цикла
+	// Г„ГЁГ°ГҐГЄГІГЁГўГ  OpenMP Г¤Г«Гї Г°Г Г±ГЇГ Г°Г Г«Г«ГҐГ«ГЁГўГ Г­ГЁГї Г¶ГЁГЄГ«Г 
 #pragma omp parallel for
 	for (int i = 0; i < 1000; i++)
 	{
@@ -32,7 +32,7 @@ int main()
 	int result = 0;
 	clock_t end = clock();
 	double seconds = (double)(end - start) / CLOCKS_PER_SEC;
-	// Далее значения a[i] и b[i] используются, например, так:
+	// Г„Г Г«ГҐГҐ Г§Г­Г Г·ГҐГ­ГЁГї a[i] ГЁ b[i] ГЁГ±ГЇГ®Г«ГјГ§ГіГѕГІГ±Гї, Г­Г ГЇГ°ГЁГ¬ГҐГ°, ГІГ ГЄ:
 #pragma omp parallel for reduction(+ : result)
 	for (int i = 0; i < 1000; i++)
 		result += (a[i] + b[i]);
